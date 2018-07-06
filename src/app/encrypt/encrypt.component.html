@@ -1,0 +1,37 @@
+<div   class="form-group"style="margin-bottom: 10px">
+  <!-- message -->
+  <div class="row" style="margin-bottom: 10px">
+    <div class="col-sm-5" style="padding-right: 5px;margin-right: 5px">
+      <label for="message"><h6>MESSAGE:</h6></label>
+      <textarea [(ngModel)]="message" required class="form-control" #mes="ngModel" name="message" id="" cols="10" rows="6"placeholder="enter message you want to encrypt"></textarea>
+    </div>
+
+    <div class="col-sm-5" style="padding-right: 5px;margin-right: 5px">
+      <label for="message"><h6>Encrypted message:</h6></label>
+      <textarea [(ngModel)]="output" class="form-control"  name="" id="" cols="10" rows="6">{{output}}</textarea>
+    </div>
+  </div>
+
+  <!-- key -->
+  <div class="row" style="margin-bottom: 10px">
+    <div class="col-sm-2"style="padding-right: 5px;margin-right: 5px"><input required name="key" [(ngModel)]="key" #val="ngModel" class="form-control" type="number" placeholder="enter a no to use as key"></div>
+    <div class="col-sm-3"style="padding-right: 5px;margin-right: 0px"></div>
+    <div class="col-sm-2"style="padding-right: 5px;margin-right: 5px"><input required name="key"  [(ngModel)]="key1" class="form-control" type="number" placeholder="enter a no to use as key"></div>
+    <div class="col-sm-3"style="padding-right: 5px;margin-right: 0px"></div>
+  </div>
+
+  <!-- button -->
+  <div class="row">
+    <div class="col-sm-5"style="padding-right: 5px;margin-right: 5px" (click)="encrypt()"><button [disabled]="!mes.valid && !val.valid" class=" btn btn-primary" >Encrypt</button></div>
+    <div class="col-sm-5"style="padding-right: 5px;margin-right: 5px"(click)="decrypt()"><button class=" btn btn-primary">Decrypt</button></div>
+  </div>
+  
+</div>
+
+<div class="form-group">
+  <label for="message"><h6>Decrypted message:</h6></label>
+  <div class="row">
+      <div class="col-sm-5"><textarea class="form-control" name="" id="" cols="10" rows="6">{{dOutput}}</textarea></div>
+      <div class="col-sm-5"></div>
+    </div>
+</div>

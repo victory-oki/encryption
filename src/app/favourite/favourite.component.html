@@ -1,0 +1,32 @@
+<p>
+  favourite works!
+</p>
+<span 
+[style.background] = "(isSelected)? 'green' : 'red' "
+(click)="onclick()">click me</span>
+
+<h3>IsSelected : {{isSelected}}</h3>
+<div class="card">
+  <div class="card-header">
+    <ul class="nav nav-pills">
+      <li [class.active] = "viewMode == 'contact us' " class="active"><a href="#" (click)="viewMode = 'contact us'">contact us</a></li>&nbsp;
+      <li [class.active] = "viewMode == 'request order' "><a href="#"(click)="viewMode = 'request order'">request order</a></li>&nbsp;
+      <li [class.active] = "viewMode == 'Blog' "><a href="#" (click)="viewMode = 'Blog'">Blog</a></li>&nbsp;
+    </ul>
+  </div>
+  <div class="card-body">
+    <div [ngSwitch]= "viewMode">
+      <h5 *ngSwitchCase = "'contact us'">contact us</h5>
+      <h5 *ngSwitchCase = "'request order'">request order</h5>
+      <h5 *ngSwitchCase = "'Blog'">Blog</h5>
+    </div>
+    <div *ngIf="(arrays.length > 0); then array else notFound"></div>
+    <ng-template #array >
+      <li *ngFor = "let arr of arrays">{{arr}}</li>
+    </ng-template>
+    <ng-template #notFound>
+      <b>could not find anything</b>
+    </ng-template>
+  </div>
+</div>
+

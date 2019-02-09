@@ -14,19 +14,30 @@ export class EncryptComponent implements OnInit {
   dummykey:number;
   dOutput="";
   encrypt(){
+    this.output="";
     let str= this.message.length;
+    this.dummykey= Math.floor(Math.random()* ((this.key)%10))
     for(let i=0;i<str;i++){
       let newCharIndex=(i);
       let unicode= this.message.charCodeAt(newCharIndex);
-      this.output+=String.fromCharCode(unicode ^ this.key);
+      let a = unicode ^ this.key;
+      this.output+=String.fromCharCode( a ^ this.dummykey);
     }
+    this.output = this.output + this.dummykey;
   }
   decrypt(){
+    this.dOutput="";
     let newStr=this.output.length;
-    for(let i=0;i<newStr;i++){
-      
+    let b = this.output.slice(-1);
+    let newDummyKey=parseInt(b);
+    console.log(b);
+    console.log(newDummyKey);
+    for(let i=0;i<(newStr-1);i++){
       let newUnicode=this.output.charCodeAt(i);
-      this.dOutput+=String.fromCharCode(newUnicode ^ this.key1);
+      // let newOutput= this.output.slice(0,newStr);
+      let a = newUnicode ^ this.key1;
+      this.dOutput+=String.fromCharCode(a ^ newDummyKey);
+      
     }
   }
   constructor() { 
